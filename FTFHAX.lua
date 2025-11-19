@@ -1162,28 +1162,29 @@ end
 	end
 end)
 
--- MADE BY XYROZZY + GOTHAM BOLD FONTS (paste from here ↓)
+-- =============== CLEAN XYROZZY CREDIT + SELECTIVE GOTHAMBOLD ===============
+-- Only bold TITLES + BIG BUTTONS, normal font for small text
 for _, obj in pairs(FTFHAX:GetDescendants()) do
-    if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
-        obj.Font = Enum.Font.GothamBold
+    if obj:IsA("TextLabel") or obj:IsA("TextButton") then
+        if obj.Name:find("Title") or obj.Name:find("PageTitle") or obj.Name:find("CreditTotal") or obj.Size.X.Offset > 150 then
+            obj.Font = Enum.Font.GothamBold  -- Bold only for titles/big buttons
+        else
+            obj.Font = Enum.Font.Gotham      -- Normal for small text
+        end
     end
 end
 
-local credit1 = Instance.new("TextLabel")
-credit1.Size = UDim2.new(1, 0, 0, 30)
-credit1.Position = UDim2.new(0, 0, 1, -30)
-credit1.BackgroundTransparency = 1
-credit1.Text = "Made by Xyrozzy"
-credit1.TextColor3 = Color3.fromRGB(255,255,255)
-credit1.TextStrokeTransparency = 0.7
-credit1.TextScaled = true
-credit1.Parent = MainMenuWindow
+-- Clean "Made by Xyrozzy" - ONLY on Main Menu (not ESP/Tools)
+local creditMain = Instance.new("TextLabel")
+creditMain.Name = "XyrozzyCredit"
+creditMain.Size = UDim2.new(1, 0, 0, 25)
+creditMain.Position = UDim2.new(0, 0, 1, -25)
+creditMain.BackgroundTransparency = 1
+creditMain.Text = "Made by Xyrozzy"
+creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)
+creditMain.Font = Enum.Font.Gotham
+creditMain.TextScaled = true
+creditMain.TextStrokeTransparency = 0.9
+creditMain.Parent = MainMenuWindow
 
-local credit2 = credit1:Clone()
-credit2.Parent = ESPMenuWindow
-
-local credit3 = credit1:Clone()
-credit3.Parent = ToolsMenuWindow
-
-print("FTFHAX v0.3.4 • Made by Xyrozzy • GothamBold Theme Loaded")
--- (end of script)
+print("FTFHAX v0.3.4 • Xyrozzy Clean Theme Applied ✨")
