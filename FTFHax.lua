@@ -401,6 +401,53 @@ TempIcon.Image = "rbxassetid://2594274683"
 
 ToolsButton.Name = "ToolsButton"
 ToolsButton.Parent = Body_2
+-- ==================== KILL PANEL (DESTROYS EVERYTHING) ====================
+local KillPanelButton = Instance.new("TextButton")
+KillPanelButton.Name = "KillPanelButton"
+KillPanelButton.Size = UDim2.new(0, 132, 0, 132)
+KillPanelButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+KillPanelButton.Text = "KILL\nPANEL"
+KillPanelButton.TextColor3 = Color3.new(1,1,1)
+KillPanelButton.Font = Enum.Font.GothamBold
+KillPanelButton.TextScaled = true
+KillPanelButton.Parent = Body_2  -- This puts it in the Main Menu grid
+
+-- Red corners + glow
+Instance.new("UICorner", KillPanelButton).CornerRadius = UDim.new(0, 12)
+local stroke = Instance.new("UIStroke", KillPanelButton)
+stroke.Color = Color3.fromRGB(255, 0, 0)
+stroke.Thickness = 3
+
+KillPanelButton.MouseButton1Click:Connect(function()
+    -- Destroy GUI
+    FTFHAX:Destroy()
+    
+    -- Clear all ESP highlights
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player.Character then
+            for _, v in pairs(player.Character:GetChildren()) do
+                if v:IsA("Highlight") then v:Destroy() end
+            end
+        end
+    end
+    for _, obj in pairs(workspace:GetDescendants()) do
+        if obj:IsA("Highlight") then obj:Destroy() end
+    end
+    
+    -- Remove metatable hook (Never Fail)
+    if getrawmetatable then
+        local mt = getrawmetatable(game)
+        setreadonly(mt, false)
+        mt.__namecall = nil
+        setreadonly(mt, true)
+    end
+    
+    -- Kill ViewportFrame / Beast Cam
+    if ViewportFrame then ViewportFrame:Destroy() end
+    
+    print("FTFHAX KILL PANEL ACTIVATED – EVERYTHING DESTROYED – YOU ARE CLEAN")
+end)
+-- =======================================================================
 ToolsButton.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 ToolsButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ToolsButton.BorderSizePixel = 0
