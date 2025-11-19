@@ -401,7 +401,7 @@ TempIcon.Image = "rbxassetid://2594274683"
 
 ToolsButton.Name = "ToolsButton"
 ToolsButton.Parent = Body_2
--- ==================== KILL PANEL (DESTROYS EVERYTHING) ====================
+-- ==================== PERFECT KILL PANEL (Toggles OFF + FULL DESTROY) ====================
 local KillPanelButton = Instance.new("TextButton")
 KillPanelButton.Name = "KillPanelButton"
 KillPanelButton.Size = UDim2.new(0, 132, 0, 132)
@@ -410,44 +410,45 @@ KillPanelButton.Text = "KILL\nPANEL"
 KillPanelButton.TextColor3 = Color3.new(1,1,1)
 KillPanelButton.Font = Enum.Font.GothamBold
 KillPanelButton.TextScaled = true
-KillPanelButton.Parent = Body_2  -- This puts it in the Main Menu grid
+KillPanelButton.Parent = Body_2
 
--- Red corners + glow
 Instance.new("UICorner", KillPanelButton).CornerRadius = UDim.new(0, 12)
 local stroke = Instance.new("UIStroke", KillPanelButton)
 stroke.Color = Color3.fromRGB(255, 0, 0)
 stroke.Thickness = 3
 
 KillPanelButton.MouseButton1Click:Connect(function()
-    -- Destroy GUI
-    FTFHAX:Destroy()
+    -- STEP 1: FORCE ALL TOGGLES OFF FIRST
+    neverfailtoggle = false
+    podstoggle = false
+    pctoggle = false
+    playertoggle = false
+    bestpctoggle = false
+    exitstoggle = false
+    beastcamtoggle = false
+    autoplaytoggle = false
+    autointeracttoggle = false
     
-    -- Clear all ESP highlights
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player.Character then
-            for _, v in pairs(player.Character:GetChildren()) do
-                if v:IsA("Highlight") then v:Destroy() end
-            end
-        end
-    end
-    for _, obj in pairs(workspace:GetDescendants()) do
-        if obj:IsA("Highlight") then obj:Destroy() end
-    end
-    
-    -- Remove metatable hook (Never Fail)
-    if getrawmetatable then
-        local mt = getrawmetatable(game)
-        setreadonly(mt, false)
-        mt.__namecall = nil
-        setreadonly(mt, true)
+    -- Reset walkspeed if you have speed hack
+    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
     end
     
-    -- Kill ViewportFrame / Beast Cam
+    -- Remove all ESP
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Highlight") then v:Destroy() end
+    end
+    
+    -- Kill Beast Cam if open
     if ViewportFrame then ViewportFrame:Destroy() end
     
-    print("FTFHAX KILL PANEL ACTIVATED – EVERYTHING DESTROYED – YOU ARE CLEAN")
+    -- STEP 2: FULL DESTROY (now you're clean)
+    task.wait(0.1) -- tiny delay so toggles fully apply
+    FTFHAX:Destroy()
+    
+    print("KILL PANEL: All toggles OFF → GUI + hooks destroyed → 100% CLEAN")
 end)
--- =======================================================================
+-- =================================================================================
 ToolsButton.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 ToolsButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ToolsButton.BorderSizePixel = 0
