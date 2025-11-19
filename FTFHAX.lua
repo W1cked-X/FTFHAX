@@ -1,6 +1,6 @@
 local ver = "v0.3.4" -- loadstring(game:HttpGet("https://raw.githubusercontent.com/LeviTheOtaku/roblox-scripts/main/FTFHAX.lua",true))()
 
-local FTFHAX = Instance.new("ScreenGui")
+local Adminpanel = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
 local CheatButton = Instance.new("ImageButton")
 local TextLabel = Instance.new("TextLabel")
@@ -49,11 +49,11 @@ local CreditTotalText_3 = Instance.new("TextLabel")
 local PageTitleText_3 = Instance.new("TextLabel")
 local ViewportFrame = Instance.new("ViewportFrame")
 
-FTFHAX.Name = "FTFHAX"
+FTFHAX.Name = "AdminPanel"
 FTFHAX.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 MenusTabFrame.Name = "MenusTabFrame"
-MenusTabFrame.Parent = FTFHAX
+MenusTabFrame.Parent = Adminpanel
 MenusTabFrame.AnchorPoint = Vector2.new(1, 0.5)
 MenusTabFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MenusTabFrame.BackgroundTransparency = 1.000
@@ -82,7 +82,7 @@ TextLabel.BackgroundTransparency = 1.000
 TextLabel.Position = UDim2.new(0, 0, 1, 0)
 TextLabel.Size = UDim2.new(1, 0, 0.200000003, 0)
 TextLabel.Font = Enum.Font.ArialBold
-TextLabel.Text = "ftfhax"
+TextLabel.Text = "AdminPanel"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 12.000
@@ -1187,4 +1187,4 @@ creditMain.TextScaled = true
 creditMain.TextStrokeTransparency = 0.9
 creditMain.Parent = MainMenuWindow
 
-print("FTFHAX v0.3.4 • Xyrozzy Clean Theme Applied ✨")
+print("Adminpanel v0.3.4 • Xyrozzy Clean Theme Applied ✨")
