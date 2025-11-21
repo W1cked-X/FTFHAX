@@ -1,4 +1,4 @@
-local ver = "v0.4 • TP Tab + Upcoming" -- FTFHAX by Xyrozzy
+local ver = "v0.4 • TP Tab" -- FTFHAX by Xyrozzy
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
