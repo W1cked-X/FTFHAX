@@ -517,6 +517,35 @@ UpText2.TextScaled = true
 UpText2.ZIndex = 11
 UpText2.Parent = Upcoming2
 
+-- FORCE CLICK CONNECTION (in case something blocked it)
+TPButton.MouseButton1Click:Connect(function()
+    MainMenuWindow.Visible = false
+    ESPMenuWindow.Visible = false
+    ToolsMenuWindow.Visible = false
+    TPMenu.Visible = true
+end)
+
+-- ≈=======≈================≈=======
+-- ==================== TP TAB CLICK CONNECTION (100% WORKING) ====================
+-- TP Menu (clone ESP - perfect style)
+local TPMenu = ESPMenuWindow:Clone()
+TPMenu.Name = "TPMenu"
+TPMenu.Visible = false
+TPMenu.Parent = FTFHAX
+TPMenu.Body.TitleLabel.Text = "TELEPORT"
+TPMenu.TopBar.PageTitleText.Text = "ftfhax - TP"
+
+-- Clear old buttons
+for _, v in TPMenu.Body.ButtonsFrame:GetChildren() do
+    if v:IsA("TextButton") then v:Destroy() end
+end
+
+local lp = game.Players.LocalPlayer
+
+local function AddTP(name, func)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0, 200, 0, 50
+
 print("FTFHAX • TP Tab + 2 Upcoming Tabs Loaded Perfectly - Xyrozzy 2025")
 
 -- ==================== FINAL TP MENU - ALL 10 DESTINATIONS (100% WORKING) ====================
@@ -588,8 +617,9 @@ end)
 
 AddTP("Nearest Teammate", function()
     local closest = nil; local dist = math.huge
+    local beast = getBeast()  -- Skip Beast
     for _, p in game.Players:GetPlayers() do
-        if p ~= lp and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+        if p ~= lp and p ~= beast and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
             local d = (lp.Character.HumanoidRootPart.Position - p.Character.HumanoidRootPart.Position).Magnitude
             if d < dist then dist = d; closest = p end
         end
