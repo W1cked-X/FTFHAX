@@ -1,4 +1,4 @@
-local ver = "v0.3.4" -- loadstring(game:HttpGet("https://raw.githubusercontent.com/LeviTheOtaku/roblox-scripts/main/FTFHAX.lua",true))()
+local ver = "v0.4 • TP Tab + Upcoming" -- FTFHAX by Xyrozzy
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
@@ -449,6 +449,63 @@ KillPanelButton.MouseButton1Click:Connect(function()
     print("KILL PANEL: All toggles OFF → GUI + hooks destroyed → 100% CLEAN")
 end)
 -- =================================================================================
+-- ==================== TP TAB + 2 (UPCOMING) TABS - BOTTOM RIGHT CORNER ====================
+local TPButton = Instance.new("ImageButton")
+TPButton.Size = UDim2.new(0, 90, 0, 90)
+TPButton.Position = UDim2.new(1, -105, 1, -105)   -- Bottom-right
+TPButton.BackgroundTransparency = 1
+TPButton.Image = "rbxassetid://2249604078"
+TPButton.ImageColor3 = Color3.fromRGB(255, 100, 100)
+TPButton.Parent = Body_2
+
+local TPText = Instance.new("TextLabel")
+TPText.Size = UDim2.new(1,0,0.35,0)
+TPText.Position = UDim2.new(0,0,0.65,0)
+TPText.BackgroundTransparency = 1
+TPText.Text = "TP"
+TPText.TextColor3 = Color3.new(1,1,1)
+TPText.Font = Enum.Font.GothamBold
+TPText.TextScaled = true
+TPText.Parent = TPButton
+
+-- Upcoming Tab 1
+local Upcoming1 = Instance.new("ImageButton")
+Upcoming1.Size = UDim2.new(0, 90, 0, 90)
+Upcoming1.Position = UDim2.new(1, -210, 1, -105)
+Upcoming1.BackgroundTransparency = 1
+Upcoming1.Image = "rbxassetid://3926305904"
+Upcoming1.ImageColor3 = Color3.fromRGB(120, 120, 120)
+Upcoming1.Parent = Body_2
+
+local UpText1 = Instance.new("TextLabel")
+UpText1.Size = UDim2.new(1,0,0.5,0)
+UpText1.Position = UDim2.new(0,0,0.5,0)
+UpText1.BackgroundTransparency = 1
+UpText1.Text = "(upcoming)"
+UpText1.TextColor3 = Color3.fromRGB(180, 180, 180)
+UpText1.Font = Enum.Font.GothamBold
+UpText1.TextScaled = true
+UpText1.Parent = Upcoming1
+
+-- Upcoming Tab 2
+local Upcoming2 = Instance.new("ImageButton()
+Upcoming2.Size = UDim2.new(0, 90, 0, 90)
+Upcoming2.Position = UDim2.new(1, -315, 1, -105)
+Upcoming2.BackgroundTransparency = 1
+Upcoming2.Image = "rbxassetid://3926305904"
+Upcoming2.ImageColor3 = Color3.fromRGB(120, 120, 120)
+Upcoming2.Parent = Body_2
+
+local UpText2 = Instance.new("TextLabel")
+UpText2.Size = UDim2.new(1,0,0.5,0)
+UpText2.Position = UDim2.new(0,0,0.5,0)
+UpText2.BackgroundTransparency = 1
+UpText2.Text = "(upcoming)"
+UpText2.TextColor3 = Color3.fromRGB(180, 180, 180)
+UpText2.Font = Enum.Font.GothamBold
+UpText2.TextScaled = true
+UpText2.Parent = Upcoming2
+
 ToolsButton.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 ToolsButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ToolsButton.BorderSizePixel = 0
