@@ -1,4 +1,4 @@
-local ver = "v0.4 • TP Tab + Upcoming" -- FTFHAX by Xyrozzy
+local ver = "v0.3.4" -- loadstring(game:HttpGet("https://raw.githubusercontent.com/LeviTheOtaku/roblox-scripts/main/FTFHAX.lua",true))()
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
