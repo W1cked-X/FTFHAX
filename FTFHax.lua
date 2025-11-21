@@ -519,6 +519,78 @@ UpText2.Parent = Upcoming2
 
 print("FTFHAX • TP Tab + 2 Upcoming Tabs Loaded Perfectly - Xyrozzy 2025")
 
+-- ==================== TP MENU + OPEN/CLOSE CONNECTION ====================
+
+-- Clone the ESP menu to make the TP menu (same clean style)
+local TPMenu = ESPMenuWindow:Clone()
+TPMenu.Name = "TPMenu"
+TPMenu.Visible = false
+TPMenu.Parent = FTFHAX
+TPMenu.Body.TitleLabel.Text = "TELEPORT"
+TPMenu.TopBar.PageTitleText.Text = "ftfhax - TP"
+
+-- Clear old buttons and add teleport buttons
+for _, v in TPMenu.Body.ButtonsFrame:GetChildren() do
+    if v:IsA("TextButton") then v:Destroy() end
+end
+
+local lp = game.Players.LocalPlayer
+
+local function AddTP(name, func)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0, 200, 0, 50)
+    btn.BackgroundColor3 = Color3.fromRGB(191, 0, 0)
+    btn.Text = name
+    btn.TextColor3 = Color3.new(1,1,1)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextScaled = true
+    btn.Parent = TPMenu.Body.ButtonsFrame
+    btn.MouseButton1Click:Connect(func)
+end
+
+AddTP("Nearest PC", function()
+    if lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") then
+        for _, v in workspace.CurrentMap:GetDescendants() do
+            if v.Name:find("Computer") and v:FindFirstChild("ProximityPrompt") then
+                lp.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,5,0)
+                break
+            end
+        end
+    end
+end)
+
+AddTP("Nearest Pod", function()
+    if lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") then
+        for _, v in workspace.CurrentMap:GetDescendants() do
+            if v.Name:find("Pod") and v:FindFirstChild("Seat") then
+                lp.Character.HumanoidRootPart.CFrame = v.Seat.CFrame + Vector3.new(0,5,0)
+                break
+            end
+        end
+    end
+end)
+
+AddTP("Exit Door", function()
+    local exit = workspace.CurrentMap:FindFirstChild("ExitDoor")
+    if exit and exit.PrimaryPart and lp.Character then
+        lp.Character.HumanoidRootPart.CFrame = exit.PrimaryPart.CFrame + Vector3.new(0,10,0)
+    end
+end)
+
+-- Open TP menu when you click the TP tab
+TPButton.MouseButton1Click:Connect(function()
+    MainMenuWindow.Visible = false
+    ESPMenuWindow.Visible = false
+    ToolsMenuWindow.Visible = false
+    TPMenu.Visible = true
+end)
+
+-- Back button inside TP menu
+TPMenu.TopBar.BackButton.MouseButton1Click:Connect(function()
+    TPMenu.Visible = false
+    MainMenuWindow.Visible = true
+end)
+
 -- ==============================/over
 
 ToolsButton.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
