@@ -1,4 +1,4 @@
-local ver = "v0.4.2" -- FTFHAX by Xyrozzy
+local ver = "v0.4.23" -- FTFHAX by Xyrozzy    -----   loadstring(game:HttpGet("https://raw.githubusercontent.com/W1cked-X/FTFHAX/refs/heads/main/FTFHax.lua"))()
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
@@ -1404,25 +1404,25 @@ for _, obj in pairs(FTFHAX:GetDescendants()) do
     end
 end
 
--- ==================== PERFECT CREDIT RE-ALIGNMENT + GUI SCALE ====================
--- Scale up main GUI height by 20px to fit taller credit
-MainMenuWindow.Size = UDim2.new(0, 420, 0, 340)  -- Old 320 → 340 (20px extra room)
+-- ==================== FIXED "MADE BY XYROZZY" - PERFECT ALIGNMENT + SCALE ====================
+-- Scale up main GUI height by 25px to fit taller credit without clipping
+MainMenuWindow.Size = UDim2.new(0, 420, 0, 345)  -- Old 320 → 345 (25px extra room)
 
 -- Re-aligned "Made by Xyrozzy" - Left-aligned + 30px gap
 local creditMain = Instance.new("TextLabel")
 creditMain.Name = "XyrozzyCredit"
-creditMain.Size = UDim2.new(1, -20, 0, 35)           -- 35px tall (10px taller, fits scaled GUI)
-creditMain.Position = UDim2.new(0, 10, 1, -45)       -- 10px left margin, 45px from bottom (30px gap + height buffer)
-creditMain.AnchorPoint = Vector2.new(0, 1)           -- Anchor to bottom-left (stable, no centering drift)
+creditMain.Size = UDim2.new(0.8, 0, 0, 30)            -- 80% width, 30px tall (fits scaled GUI)
+creditMain.Position = UDim2.new(0, 20, 1, -55)         -- 20px left margin, 55px from bottom (30px gap + height buffer)
+creditMain.AnchorPoint = Vector2.new(0, 1)             -- Anchor to bottom-left (stable, no drift)
 creditMain.BackgroundTransparency = 1
 creditMain.Text = "Made by Xyrozzy"
-creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Soft gray for clean look
+creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Soft gray
 creditMain.Font = Enum.Font.Gotham
 creditMain.TextScaled = true
 creditMain.TextStrokeTransparency = 0.9
-creditMain.TextXAlignment = Enum.TextXAlignment.Left  -- Left-aligned (no "off-center" vibe)
+creditMain.TextXAlignment = Enum.TextXAlignment.Left   -- Left-aligned (clean, no "off-center")
 creditMain.Parent = MainMenuWindow
 
-print("Credit Re-Aligned + GUI Scaled • Xyrozzy 2025 • Perfect Fit")
+print("Credit Fixed + GUI Scaled • Made by Xyrozzy • Perfect Alignment")
 
 print("FTFHAX v0.3.4 • Xyrozzy Clean Theme Applied ✨")
