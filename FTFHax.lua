@@ -1,4 +1,4 @@
-local ver = "v0.4 • TP Tab" -- FTFHAX by Xyrozzy
+local ver = "v0.4.1" -- FTFHAX by Xyrozzy
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
@@ -1404,11 +1404,12 @@ for _, obj in pairs(FTFHAX:GetDescendants()) do
     end
 end
 
--- Clean "Made by Xyrozzy" - ONLY on Main Menu (not ESP/Tools)
+-- Clean "Made by Xyrozzy" - TALLER (55px) + 30px GAP FROM BOTTOM
 local creditMain = Instance.new("TextLabel")
 creditMain.Name = "XyrozzyCredit"
-creditMain.Size = UDim2.new(1, 0, 0, 25)
-creditMain.Position = UDim2.new(0, 0, 1, -25)
+creditMain.Size = UDim2.new(1, 0, 0, 55)            -- Height: 55px (30px taller than old 25px)
+creditMain.Position = UDim2.new(0, 0, 1, -85)       -- -85 from bottom (30px gap + extra for height)
+creditMain.AnchorPoint = Vector2.new(0.5, 1)        -- Center-aligned to bottom
 creditMain.BackgroundTransparency = 1
 creditMain.Text = "Made by Xyrozzy"
 creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)
