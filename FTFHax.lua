@@ -1,4 +1,4 @@
-local ver = "v0.4.1" -- FTFHAX by Xyrozzy
+local ver = "v0.4.2" -- FTFHAX by Xyrozzy
 
 local FTFHAX = Instance.new("ScreenGui")
 local MenusTabFrame = Instance.new("Frame")
@@ -1404,18 +1404,25 @@ for _, obj in pairs(FTFHAX:GetDescendants()) do
     end
 end
 
--- Clean "Made by Xyrozzy" - TALLER (55px) + 30px GAP FROM BOTTOM
+-- ==================== PERFECT CREDIT RE-ALIGNMENT + GUI SCALE ====================
+-- Scale up main GUI height by 20px to fit taller credit
+MainMenuWindow.Size = UDim2.new(0, 420, 0, 340)  -- Old 320 → 340 (20px extra room)
+
+-- Re-aligned "Made by Xyrozzy" - Left-aligned + 30px gap
 local creditMain = Instance.new("TextLabel")
 creditMain.Name = "XyrozzyCredit"
-creditMain.Size = UDim2.new(1, 0, 0, 55)            -- Height: 55px (30px taller than old 25px)
-creditMain.Position = UDim2.new(0, 0, 1, -85)       -- -85 from bottom (30px gap + extra for height)
-creditMain.AnchorPoint = Vector2.new(0.5, 1)        -- Center-aligned to bottom
+creditMain.Size = UDim2.new(1, -20, 0, 35)           -- 35px tall (10px taller, fits scaled GUI)
+creditMain.Position = UDim2.new(0, 10, 1, -45)       -- 10px left margin, 45px from bottom (30px gap + height buffer)
+creditMain.AnchorPoint = Vector2.new(0, 1)           -- Anchor to bottom-left (stable, no centering drift)
 creditMain.BackgroundTransparency = 1
 creditMain.Text = "Made by Xyrozzy"
-creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)
+creditMain.TextColor3 = Color3.fromRGB(220, 220, 220)  -- Soft gray for clean look
 creditMain.Font = Enum.Font.Gotham
 creditMain.TextScaled = true
 creditMain.TextStrokeTransparency = 0.9
+creditMain.TextXAlignment = Enum.TextXAlignment.Left  -- Left-aligned (no "off-center" vibe)
 creditMain.Parent = MainMenuWindow
+
+print("Credit Re-Aligned + GUI Scaled • Xyrozzy 2025 • Perfect Fit")
 
 print("FTFHAX v0.3.4 • Xyrozzy Clean Theme Applied ✨")
